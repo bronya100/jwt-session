@@ -172,7 +172,7 @@ class JwtSession implements SessionHandlerInterface
         $token = $jwt->generateToken($data);
 
         if (!headers_sent()) {
-            setcookie(self::COOKIE_PREFIX . $this->suffix, $token, null, '/', $this->cookieDomain);
+            setcookie(self::COOKIE_PREFIX . $this->suffix, $token, null, '/', $this->cookieDomain, null, true);
             if (defined("SETCOOKIE_FORTEST")) {
                 $_COOKIE[self::COOKIE_PREFIX . $this->suffix] = $token;
             }
